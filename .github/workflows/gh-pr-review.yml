@@ -1,0 +1,38 @@
+name: Pull Request Review
+
+on:
+  workflow_dispatch:
+    inputs:
+      pull_request_url:
+        description: "Pull Request Link"
+        required: true
+        type: string
+      review_event:
+        description: "Kind Review"
+        required: true
+        type: choice
+        options:
+        - comment
+        - approve
+        - request_changes
+      review_message:
+        description: "A message comment in review"
+        required: true
+        type: string
+        default: "gitnap message generated automatically"
+
+permissions:
+  contents: write
+  pull-requests: write
+  
+jobs:
+  review_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute Code Review
+        uses: ws2git/code-scout@v1
+        with:
+          pull_request_url: ${{ github.event.inputs.pull_request_url }}
+          event: ${{ github.event.inputs.review_event }}
+          body: ${{ github.event.inputs.review_message }}
+          github-token: ${{ secrets.GH_TOKEN }}
