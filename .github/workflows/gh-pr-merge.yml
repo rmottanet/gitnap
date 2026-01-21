@@ -1,4 +1,4 @@
-name: Merge Pull Request
+name: Pull Request Merge
 
 on:
   workflow_dispatch:

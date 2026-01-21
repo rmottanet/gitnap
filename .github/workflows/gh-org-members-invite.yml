@@ -1,4 +1,4 @@
-name: Members Invitation
+name: Org Members Invitation
 
 on:
   workflow_dispatch:

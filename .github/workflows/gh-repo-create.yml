@@ -1,4 +1,4 @@
-name: Create Repository
+name: Repo Create
 
 on:
   workflow_dispatch:

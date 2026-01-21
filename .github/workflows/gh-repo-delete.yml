@@ -1,4 +1,4 @@
-name: Delete Repository
+name: Repo Delete
 
 on:
   workflow_dispatch:

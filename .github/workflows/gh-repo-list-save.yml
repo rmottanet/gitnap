@@ -1,4 +1,4 @@
-name: List Repositories and Save
+name: Repo List and Save
 permissions:
   contents: read
   actions: read
