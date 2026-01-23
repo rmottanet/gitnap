@@ -11,7 +11,7 @@ on:
         required: true
         default: 'github'
       limit_output:
-        description: 'Github repo owner name.'
+        description: 'Limit output.'
         required: false
         default: '100'
 
