@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rmottanet_gitnap&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rmottanet_gitnap)
+
 # GitNap: Bash Script Collection
 
 ## ctrl+s :v:
