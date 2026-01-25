@@ -1,12 +1,11 @@
-name: Build
+name: SonarQube
+run-name: SonarQube Cloud Analysis.
 on:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
-permissions:
-  contents: read
 jobs:
   sonarqube:
     name: SonarQube
@@ -16,6 +15,6 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602
+        uses: SonarSource/sonarqube-scan-action@a31c9398be7ace6bbfaf30c0bd5d415f843d45e9
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
