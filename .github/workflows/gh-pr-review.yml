@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Execute Code Review
-        uses: ws2git/code-scout@v1
+        uses: ws2git/code-scout@f2d52cf795a29cd9e18a6f84c2d74ec95c4da92b
         with:
           pull_request_url: ${{ github.event.inputs.pull_request_url }}
           event: ${{ github.event.inputs.review_event }}
