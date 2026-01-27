@@ -14,7 +14,7 @@ function download_license() {
     # Checks if the parameter was provided
     if [[ -z "$license_key" ]]; then
         echo "Which is the license key?"
-        curl -sSL "https://gitlab.com/api/v4/templates/licenses" | jq -r '.[].key'
+        curl --proto "=https" --tlsv1.2 -sSf -L "https://gitlab.com/api/v4/templates/licenses" | jq -r '.[].key'
         exit 1
     fi
     
