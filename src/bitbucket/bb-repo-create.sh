@@ -56,6 +56,8 @@ function create_bitbucket_repo() {
 
     # Check for successful creation
     echo "$response" | jq -r '.error.message // (.links.clone[] | select(.name == "ssh") | .href)'  
+    
+    return 0
 }
 
 

@@ -30,7 +30,8 @@ function search_gitlab_repo() {
     echo "$response" > "$tmp_file"
     less "$tmp_file"
     rm "$tmp_file"
-
+    
+    return 0
 }
 
 search_gitlab_repo "$1"

@@ -64,6 +64,8 @@ function create_bitbucket_pullrequest() {
 
     # Check if there are erros
     echo "$response" #| jq -r '.iid // .message'
+    
+    return 0
 }
 
 create_bitbucket_pullrequest "$1" "$2" 

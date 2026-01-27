@@ -35,7 +35,8 @@ function delete_github_notifications() {
         -H "X-GitHub-Api-Version: 2022-11-28" )
 
     echo "$response" 
-
+    
+    return 0
 }
 
 delete_github_notifications "$1"

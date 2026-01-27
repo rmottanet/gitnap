@@ -23,6 +23,8 @@ function download_gitignore() {
     
     # Download `.gitignore` file
     curl --proto "=https" --tlsv1.2 -sSf -L "$gitignore_url" | jq -r '.content' > .gitignore
+    
+    return 0
 }
 
 

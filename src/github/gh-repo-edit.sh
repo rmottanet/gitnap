@@ -50,6 +50,8 @@ function edit_github_repo() {
     
     # Check if there are erros
     echo "$response" | jq -r '.message'
+    
+    return 0
 }
 
 

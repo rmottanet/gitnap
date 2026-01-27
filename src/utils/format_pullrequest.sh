@@ -21,5 +21,6 @@ function format_pullrequest() {
 
   # Retorna o conteúdo formatado
   echo "$escaped_content"
-
+ 
+  return 0
 }

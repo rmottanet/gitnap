@@ -42,6 +42,8 @@ function delete_github_repo() {
     else
         echo "Deletion cancelled."
     fi
+    
+    return 0
 }
 
 

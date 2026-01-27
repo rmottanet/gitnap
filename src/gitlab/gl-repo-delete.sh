@@ -42,6 +42,7 @@ function delete_gitlab_repo() {
         echo "Deletion cancelled."
     fi    
     
+    return 0
 }
 
 

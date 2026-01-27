@@ -42,6 +42,8 @@ function build_bb_endpoint() {
     esac
 
     echo "$endpoint"
+    
+    return 0
 }
 
 
@@ -75,6 +77,8 @@ function build_gh_endpoint() {
     esac
 
     echo "$endpoint"
+    
+    return 0
 }
 
 
@@ -110,4 +114,6 @@ function build_gl_endpoint() {
     esac
 
     echo "$endpoint"
+    
+    return 0
 }

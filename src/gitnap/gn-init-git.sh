@@ -41,6 +41,8 @@ function initialize_git_repo() {
     
     # TODO: select and set remote to push
 
+    
+    return 0
 }
 
 

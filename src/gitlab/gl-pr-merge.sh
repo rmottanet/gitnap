@@ -58,6 +58,8 @@ function merge_gitlab_pullrequest() {
 
     # Check if there are erros
     echo "$response" #| jq -r '.number // .message'
+    
+    return 0
 }
 
 merge_gitlab_pullrequest "$1" "$2" "$3"

@@ -54,6 +54,8 @@ function edit_bitbucket_repo() {
 
     # Check if there are errors
     echo "$response" | jq -r '.error.message'
+    
+    return 0
 }
 
 

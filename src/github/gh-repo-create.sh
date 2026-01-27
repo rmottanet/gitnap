@@ -31,6 +31,8 @@ function create_github_repo() {
 
     # Check if there are erros
     echo "$response" | jq -r '.ssh_url // .message'
+    
+    return 0
 }
 
 

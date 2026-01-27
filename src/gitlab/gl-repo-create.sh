@@ -30,6 +30,8 @@ function create_gitlab_repo() {
     
     # Check if there are erros
     echo "$response" | jq -r '.ssh_url_to_repo // .message'
+    
+    return 0
 }
 
 

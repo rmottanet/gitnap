@@ -29,6 +29,8 @@ function download_license() {
     
     # Download `LICENSE` file 
     curl --proto "=https" --tlsv1.2 -sSf -L "$license_url" | jq -r '.content' > LICENSE
+    
+    return 0
 }
 
 

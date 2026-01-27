@@ -29,7 +29,8 @@ function search_github_repo() {
     echo "$response" > "$tmp_file"
     less "$tmp_file"
     rm "$tmp_file"
-
+    
+    return 0
 }
 
 search_github_repo "$1"

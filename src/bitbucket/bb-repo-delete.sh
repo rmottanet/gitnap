@@ -46,6 +46,7 @@ function delete_bitbucket_repo() {
         echo "Deletion cancelled."
     fi
     
+    return 0
 }
 
 

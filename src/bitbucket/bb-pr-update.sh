@@ -76,6 +76,8 @@ function update_bitbucket_pullrequest() {
 
     # Check if there are erros
     echo "$response" #| jq -r '.iid // .message'
+    
+    return 0
 }
 
 update_bitbucket_pullrequest "$1" "$2" "$3"

@@ -59,6 +59,8 @@ function create_gitlab_pullrequest() {
 
     # Check if there are erros
     echo "$response" | jq -r '.iid // .message'
+    
+    return 0
 }
 
 create_gitlab_pullrequest "$1" "$2" 

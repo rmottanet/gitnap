@@ -30,7 +30,8 @@ function list_github_notifications() {
     echo "$response" > "$tmp_file"
     less "$tmp_file"
     rm "$tmp_file"
-
+    
+    return 0
 }
 
 list_github_notifications
