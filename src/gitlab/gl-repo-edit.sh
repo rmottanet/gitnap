@@ -43,7 +43,7 @@ function edit_gitlab_repo() {
     endpoint="https://gitlab.com/api/v4/projects/$OWNER$SLASH_ENCODED$REPO"
         
     # Edit GitLab repository using curl
-    response=$(curl -sSL -X PUT "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PUT "$endpoint" \
         -H "Authorization: Bearer $GITLAB_TOKEN" \
         -H "Content-Type: application/json" \
         -d "$payload" )

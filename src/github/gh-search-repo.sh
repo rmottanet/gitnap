@@ -18,7 +18,7 @@ function search_github_repo() {
     # Construct API Endpoint
     endpoint="https://api.github.com/search/repositories?q=$QUERY"
 
-    response=$(curl -s "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L "$endpoint" \
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer $GITHUB_TOKEN" \
         -H "X-GitHub-Api-Version: 2022-11-28" \

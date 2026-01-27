@@ -52,7 +52,7 @@ function create_gitlab_pullrequest() {
     endpoint="$(build_gl_endpoint "PR" "$OWNER" "$REPO")"
     
     # Create the repository using curl
-    response=$(curl -sSL -X POST "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X POST "$endpoint" \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer $GITLAB_TOKEN" \
         -d "$payload" )

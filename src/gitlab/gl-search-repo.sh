@@ -20,7 +20,7 @@ function search_gitlab_repo() {
     endpoint="https://gitlab.com/api/v4/search?scope=projects&search=$QUERY"
 
     # CURL and jq
-    response=$(curl -s "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L "$endpoint" \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer $GITLAB_TOKEN" \
         | jq -r '.[] | "Name: \(.name), Description: \(.description), Web URL: \(.web_url)"' )

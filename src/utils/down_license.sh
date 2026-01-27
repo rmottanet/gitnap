@@ -28,7 +28,7 @@ function download_license() {
     license_url="https://gitlab.com/api/v4/templates/licenses/$license_key?project=$repo_name&fullname=$license_holder"
     
     # Download `LICENSE` file 
-    curl -sSL "$license_url" | jq -r '.content' > LICENSE
+    curl --proto "=https" --tlsv1.2 -sSf -L "$license_url" | jq -r '.content' > LICENSE
 }
 
 

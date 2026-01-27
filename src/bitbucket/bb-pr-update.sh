@@ -68,7 +68,7 @@ function update_bitbucket_pullrequest() {
     endpoint="$pr_endpoint/$pr"
        
     # Create the repository using curl
-    response=$(curl -sSL -X PUT "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PUT "$endpoint" \
         -H "$BITBUCKET_AUTH" \
         -H 'Accept: application/json' \
         -H 'Content-Type: application/json' \

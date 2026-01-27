@@ -23,7 +23,7 @@ function create_gitlab_repo() {
     endpoint="https://gitlab.com/api/v4/projects"
     
     # Create GitLab repository using curl
-    response=$(curl -sSL -X POST "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X POST "$endpoint" \
         -H "Authorization: Bearer $GITLAB_TOKEN" \
         -H "Content-Type: application/json" \
         -d "$payload" )

@@ -34,7 +34,7 @@ function delete_gitlab_repo() {
     
     if [[ $confirmation =~ ^[Yy]$ ]]; then
         # Delete the repository using curl
-        response=$(curl -sSL -X DELETE "$endpoint" \
+        response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X DELETE "$endpoint" \
             -H "Authorization: Bearer $GITLAB_TOKEN" )
 
         echo "$response" | jq -r '.message'

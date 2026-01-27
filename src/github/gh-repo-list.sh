@@ -19,17 +19,17 @@ function list_github_repo() {
     
     # Get all repositories
     while [ "$endpoint" ]; do
-        repos=$(curl -sSL -H "Authorization: token $GITHUB_TOKEN" "$endpoint")
+        repos=$(curl --proto "=https" --tlsv1.2 -sSf -L -H "Authorization: token $GITHUB_TOKEN" "$endpoint")
         echo "$repos" >> "$tmp_file"
         
         # Iterate through each repository in the response
         for repo_url in $(echo "$repos" | jq -r '.[].url'); do
-            response=$(curl -sSL -H "Authorization: token $GITHUB_TOKEN" "$repo_url")
+            response=$(curl --proto "=https" --tlsv1.2 -sSf -L -H "Authorization: token $GITHUB_TOKEN" "$repo_url")
             echo "$response" >> "$tmp_file"
         done
         
         # Check for more pages
-        endpoint=$(curl -sSL -I -H "Authorization: token $GITHUB_TOKEN" "$endpoint" | grep -i '^link:' | sed -n 's/.*<\(.*\)>; rel="next".*/\1/p')
+        endpoint=$(curl --proto "=https" --tlsv1.2 -sSf -L -I -H "Authorization: token $GITHUB_TOKEN" "$endpoint" | grep -i '^link:' | sed -n 's/.*<\(.*\)>; rel="next".*/\1/p')
     done
     
     less "$tmp_file"                                    

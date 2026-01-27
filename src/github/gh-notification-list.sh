@@ -20,7 +20,7 @@ function list_github_notifications() {
     endpoint="https://api.github.com/notifications"
 
     # Get notifications
-    response=$(curl -sSL "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L "$endpoint" \
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer $GITHUB_TOKEN" \
         -H "X-GitHub-Api-Version: 2022-11-28" )

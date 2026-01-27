@@ -56,7 +56,7 @@ function update_gitlab_pullrequest() {
     endpoint="$pr_endpoint/$pr"
     
     # Create the repository using curl
-    response=$(curl -sSL -X PATCH "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PATCH "$endpoint" \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer $GITLAB_TOKEN" \
         -d "$payload" )

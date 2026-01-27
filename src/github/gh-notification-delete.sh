@@ -29,7 +29,7 @@ function delete_github_notifications() {
     endpoint="https://api.github.com/notifications/threads/$NOTIFICATION_ID"
 
     # Delete notifications
-    response=$(curl -sSL -X DELETE "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X DELETE "$endpoint" \
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer $GITHUB_TOKEN" \
         -H "X-GitHub-Api-Version: 2022-11-28" )

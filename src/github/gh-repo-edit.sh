@@ -42,7 +42,7 @@ function edit_github_repo() {
     endpoint="https://api.github.com/repos/$OWNER/$REPO"
     
     # Edit the repository using curl
-    response=$(curl -sSL -X PATCH "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PATCH "$endpoint" \
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer $GITHUB_TOKEN" \
         -H "X-GitHub-Api-Version: 2022-11-28" \

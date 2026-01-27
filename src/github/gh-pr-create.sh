@@ -49,7 +49,7 @@ function create_github_pullrequest() {
     endpoint="$(build_gh_endpoint "PR" "$OWNER" "$REPO")"
     
     # Create the repository using curl
-    response=$(curl -sSL -X POST "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X POST "$endpoint" \
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer $GITHUB_TOKEN" \
         -H "X-GitHub-Api-Version: 2022-11-28" \

@@ -51,7 +51,7 @@ function merge_gitlab_pullrequest() {
     endpoint="$pr_endpoint/$pr/merge"
     
     # Create the repository using curl
-    response=$(curl -sSL -X PUT "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PUT "$endpoint" \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer $GITLAB_TOKEN" \
         -d "$payload" )

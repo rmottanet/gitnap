@@ -37,7 +37,7 @@ function delete_bitbucket_repo() {
     
     if [[ $confirmation =~ ^[Yy]$ ]]; then
         # Delete the repository
-        response=$(curl -sSL -X DELETE "$endpoint" \
+        response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X DELETE "$endpoint" \
         -H "$BITBUCKET_AUTH" )
 
         # Check if there are errors

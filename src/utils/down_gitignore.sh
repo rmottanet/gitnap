@@ -22,7 +22,7 @@ function download_gitignore() {
     gitignore_url="https://gitlab.com/api/v4/templates/gitignores/$language_name"
     
     # Download `.gitignore` file
-    curl -sSL "$gitignore_url" | jq -r '.content' > .gitignore
+    curl --proto "=https" --tlsv1.2 -sSf -L "$gitignore_url" | jq -r '.content' > .gitignore
 }
 
 

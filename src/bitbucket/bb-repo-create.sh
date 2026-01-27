@@ -48,7 +48,7 @@ function create_bitbucket_repo() {
     endpoint="https://api.bitbucket.org/2.0/repositories/$WORKSPACE/$REPO"
     
     # Create Bitbucket repository
-    response=$(curl -sSL -X POST "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X POST "$endpoint" \
         -H "$BITBUCKET_AUTH" \
         -H 'Accept: application/json' \
         -H 'Content-Type: application/json' \

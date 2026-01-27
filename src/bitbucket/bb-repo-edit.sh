@@ -46,7 +46,7 @@ function edit_bitbucket_repo() {
     endpoint="https://api.bitbucket.org/2.0/repositories/$WORKSPACE/$REPO"
 
     # Edit Bitbucket repository
-    response=$(curl -sSL -X PUT "$endpoint" \
+    response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PUT "$endpoint" \
         -H "$BITBUCKET_AUTH" \
         -H 'Accept: application/json' \
         -H 'Content-Type: application/json' \
