@@ -9,7 +9,7 @@ BITBUCKET_AUTH="Authorization: Basic $(echo -n "$BITBUCKET_USER:$BITBUCKET_APPWD
 function create_bitbucket_repo() {
     local repo
     local workspace
-    local PROJECT
+    local project
     local payload
     local endpoint
     local response
@@ -23,11 +23,11 @@ function create_bitbucket_repo() {
     fi
 
     # Name of project
-    PROJECT="$2"
+    project="$2"
     
     # Checks if the parameter was provided or use the default
-    if [[ -z "$PROJECT" ]]; then
-        PROJECT="$DEF_PROJECT"
+    if [[ -z "$project" ]]; then
+        project="$DEF_PROJECT"
     fi
 
     # Name of workspace
@@ -41,7 +41,7 @@ function create_bitbucket_repo() {
     # Create the JSON payload for the repository
     payload='{"scm": "git", "is_private": true,
         "project": {
-            "key": "'"$PROJECT"'"
+            "key": "'"$project"'"
         }}'
 
     # Construct the API Endpoint
