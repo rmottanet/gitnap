@@ -22,7 +22,7 @@ function build_bb_endpoint() {
     repo="$3"
 
     if [[ -z "$route" || -z "$owner" || -z "$repo" ]]; then
-        echo "Error: route, owner, and repository are required for Bitbucket."
+        echo "Error: route, owner, and repository are required for Bitbucket." >&2
         exit 1
     fi
 
@@ -58,7 +58,7 @@ function build_gh_endpoint() {
     repo="$3"
 
     if [[ -z "$route" || -z "$owner" || -z "$repo" ]]; then
-        echo "Error: route, owner, and repository are required for GitHub."
+        echo "Error: route, owner, and repository are required for GitHub." >&2
         exit 1
     fi
 
@@ -95,7 +95,7 @@ function build_gl_endpoint() {
     slash_encoded="%2F"
 
     if [[ -z "$route" || -z "$owner" || -z "$repo" ]]; then
-        echo "Error: route, owner, and repository are required for Gitlab."
+        echo "Error: route, owner, and repository are required for Gitlab." >&2
         exit 1
     fi
 
