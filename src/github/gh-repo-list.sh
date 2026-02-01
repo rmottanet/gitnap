@@ -18,7 +18,7 @@ function list_github_repo() {
     tmp_file=$(mktemp)
     
     # Get all repositories
-    while [ "$endpoint" ]; do
+    while [[ "$endpoint" ]]; do
         repos=$(curl --proto "=https" --tlsv1.2 -sSf -L -H "Authorization: token $GITHUB_TOKEN" "$endpoint")
         echo "$repos" >> "$tmp_file"
         
