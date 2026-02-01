@@ -64,7 +64,7 @@ function update_bitbucket_pullrequest() {
     # Construct URL endpoint
     #endpoint_url="$API_URL/projects/$PROJECT/repos/$repo/pull-requests/$pr"
 
-    pr_endpoint="$(build_bb_endpoint "PR" "$WORKSPACE" "$repo")"
+    pr_endpoint="$(build_bb_endpoint "PR" "$workspace" "$repo")"
     endpoint="$pr_endpoint/$pr"
        
     # Create the repository using curl

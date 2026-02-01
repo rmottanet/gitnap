@@ -11,7 +11,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 function create_bitbucket_pullrequest() {
     local pr
     local repo
-    local WORKSPACE
+    local workspace
     local payload
     local pr_endpoint
     local endpoint
@@ -36,12 +36,12 @@ function create_bitbucket_pullrequest() {
     fi
 
     # Repo owner
-    WORKSPACE="$3"
+    workspace="$3"
     
     # Verifica se o parâmetro foi fornecido
-    if [[ -z "$WORKSPACE" ]]; then
+    if [[ -z "$workspace" ]]; then
         # Se não foi fornecido, utiliza o padrão definido em auth.sh
-        WORKSPACE="$DEF_WORKSPACE"
+        workspace="$DEF_WORKSPACE"
     fi
         
     # Create the JSON payload for the repository
@@ -53,7 +53,7 @@ function create_bitbucket_pullrequest() {
     }'
 
     # Construct URL endpoint
-    pr_endpoint="$(build_bb_endpoint "PR" "$WORKSPACE" "$repo")"
+    pr_endpoint="$(build_bb_endpoint "PR" "$workspace" "$repo")"
     endpoint="$endpoint/$pr/merge"
     
     # Create the repository using curl

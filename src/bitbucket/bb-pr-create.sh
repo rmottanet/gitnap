@@ -10,7 +10,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 
 function create_bitbucket_pullrequest() {
     local repo
-    local WORKSPACE
+    local workspace
     local pr_title
     local pr_body
     local source_branch
@@ -28,11 +28,11 @@ function create_bitbucket_pullrequest() {
     fi
 
     # Name of workspace
-    WORKSPACE="$2"
+    workspace="$2"
     
     # Checks if the parameter was provided or use the default
-    if [[ -z "$WORKSPACE" ]]; then
-        WORKSPACE="$DEF_WORKSPACE"
+    if [[ -z "$workspace" ]]; then
+        workspace="$DEF_WORKSPACE"
     fi
         
     pr_title="$(format_pullrequest "title")"
@@ -53,7 +53,7 @@ function create_bitbucket_pullrequest() {
         } } }'
 
     # Construct URL endpoint
-    endpoint="$(build_bb_endpoint "PR" "$WORKSPACE" "$repo")"
+    endpoint="$(build_bb_endpoint "PR" "$workspace" "$repo")"
     
     # Create the repository using curl
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X POST "$endpoint" \
