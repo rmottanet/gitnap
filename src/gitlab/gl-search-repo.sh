@@ -3,21 +3,21 @@ set -euo pipefail
 
 
 function search_gitlab_repo() {
-    local QUERY
+    local query
     local endpoint
     local response
     local tmp_file
 
     # String to query
-    QUERY="$1"
+    query="$1"
     
     # Checks if the parameter was provided
-    if [[ -z "$QUERY" ]]; then
+    if [[ -z "$query" ]]; then
         echo "A query to search is necessary"
     fi
 
     # Construct API Endpoint
-    endpoint="https://gitlab.com/api/v4/search?scope=projects&search=$QUERY"
+    endpoint="https://gitlab.com/api/v4/search?scope=projects&search=$query"
 
     # CURL and jq
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L "$endpoint" \

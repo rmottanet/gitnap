@@ -2,21 +2,21 @@
 
 
 function search_github_repo() {
-    local QUERY
+    local query
     local endpoint
     local response
     local tmp_file
 
     # String to query
-    QUERY="$1"
+    query="$1"
     
     # Checks if the parameter was provided
-    if [[ -z "$QUERY" ]]; then
+    if [[ -z "$query" ]]; then
         echo "A query to search is necessary"
     fi
 
     # Construct API Endpoint
-    endpoint="https://api.github.com/search/repositories?q=$QUERY"
+    endpoint="https://api.github.com/search/repositories?q=$query"
 
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L "$endpoint" \
         -H "Accept: application/vnd.github+json" \
