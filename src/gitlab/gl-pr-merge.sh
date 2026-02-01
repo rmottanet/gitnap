@@ -11,7 +11,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 function merge_gitlab_pullrequest() {
     local pr
     local repo
-    local OWNER
+    local owner
     local payload
     local endpoint
     local response
@@ -35,19 +35,19 @@ function merge_gitlab_pullrequest() {
     fi
 
     # Repo owner
-    OWNER="$3"
+    owner="$3"
     
     # Verifica se o parâmetro foi fornecido
-    if [[ -z "$OWNER" ]]; then
+    if [[ -z "$owner" ]]; then
         # Se não foi fornecido, utiliza o padrão definido em auth.sh
-        OWNER="$DEF_GH_OWNER"
+        owner="$DEF_GL_OWNER"
     fi
         
     # Create the JSON payload for the repository
     payload='{"merge_method":"squash"}'
 
     # Construct the endpoint URL
-    pr_endpoint="$(build_gl_endpoint "PR" "$OWNER" "$repo")"
+    pr_endpoint="$(build_gl_endpoint "PR" "$owner" "$repo")"
     endpoint="$pr_endpoint/$pr/merge"
     
     # Create the repository using curl

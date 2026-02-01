@@ -4,7 +4,7 @@ set -euo pipefail
 
 function delete_github_repo() {
     local repo
-    local OWNER
+    local owner
     local endpoint
     local response
     
@@ -17,15 +17,15 @@ function delete_github_repo() {
     fi
 
     # Repo owner
-    OWNER="$2"
+    owner="$2"
     
     # Checks if the parameter was provided or use the default
-    if [[ -z "$OWNER" ]]; then
-        OWNER="$DEF_GH_OWNER"
+    if [[ -z "$owner" ]]; then
+        owner="$DEF_GH_OWNER"
     fi
         
     # Construct API Endpoint
-    endpoint="https://api.github.com/repos/$OWNER/$repo"
+    endpoint="https://api.github.com/repos/$owner/$repo"
     
     # Confirm deletion before proceeding
     echo "Are you sure you want to delete the repository '$repo' (y/N)?"

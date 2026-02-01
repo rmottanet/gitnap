@@ -4,7 +4,7 @@ set -euo pipefail
 
 function edit_gitlab_repo() {
     local repo
-    local OWNER
+    local owner
     local new_description
     local payload
     local endpoint
@@ -28,11 +28,11 @@ function edit_gitlab_repo() {
     fi
     
     # Repo owner
-    OWNER="$3"
+    owner="$3"
     
     # Checks if the parameter was provided or use the default
-    if [[ -z "$OWNER" ]]; then
-        OWNER="$DEF_GH_OWNER"
+    if [[ -z "$owner" ]]; then
+        owner="$DEF_GL_OWNER"
     fi
     
     # Create the JSON payload for the repository
@@ -40,7 +40,7 @@ function edit_gitlab_repo() {
     
     # Construct API Endpoint
     SLASH_ENCODED="%2F"
-    endpoint="https://gitlab.com/api/v4/projects/$OWNER$SLASH_ENCODED$repo"
+    endpoint="https://gitlab.com/api/v4/projects/$owner$SLASH_ENCODED$repo"
         
     # Edit GitLab repository using curl
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PUT "$endpoint" \

@@ -11,7 +11,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 function update_gitlab_pullrequest() {
     local pr
     local repo
-    local OWNER
+    local owner
     local up_pr_title
     local up_pr_body
     local payload
@@ -37,12 +37,12 @@ function update_gitlab_pullrequest() {
     fi
 
     # Repo owner
-    OWNER="$3"
+    owner="$3"
     
     # Verifica se o parâmetro foi fornecido
-    if [[ -z "$OWNER" ]]; then
+    if [[ -z "$owner" ]]; then
         # Se não foi fornecido, utiliza o padrão definido em auth.sh
-        OWNER="$DEF_GH_OWNER"
+        owner="$DEF_GL_OWNER"
     fi
         
     pr_title="$(format_pullrequest "title")"
@@ -52,7 +52,7 @@ function update_gitlab_pullrequest() {
     payload='{"title":"'"$pr_title"'", "body":"'"$pr_body"'"}'
 
     # Construct the endpoint URL
-    pr_endpoint="$(build_gl_endpoint "PR" "$OWNER" "$repo")"
+    pr_endpoint="$(build_gl_endpoint "PR" "$owner" "$repo")"
     endpoint="$pr_endpoint/$pr"
     
     # Create the repository using curl

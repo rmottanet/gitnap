@@ -4,7 +4,7 @@ set -euo pipefail
 
 function delete_gitlab_repo() {
     local repo
-    local OWNER
+    local owner
     local endpoint
     local response
         
@@ -17,16 +17,16 @@ function delete_gitlab_repo() {
     fi
 
     # Repo owner
-    OWNER="$2"
+    owner="$2"
     
     # Checks if the parameter was provided or use the default
-    if [[ -z "$OWNER" ]]; then
-        OWNER="$DEF_GL_OWNER"
+    if [[ -z "$owner" ]]; then
+        owner="$DEF_GL_OWNER"
     fi
         
     # Construct API Endpoint
     SLASH_ENCODED="%2F"
-    endpoint="https://gitlab.com/api/v4/projects/$OWNER$SLASH_ENCODED$repo"
+    endpoint="https://gitlab.com/api/v4/projects/$owner$SLASH_ENCODED$repo"
         
     # Confirm deletion before proceeding
     echo "Are you sure you want to delete the repository '$repo' (y/N)?"

@@ -11,7 +11,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 function update_github_pullrequest() {
     local pr
     local repo
-    local OWNER
+    local owner
     local up_pr_title
     local up_pr_body
     local source_branch
@@ -39,12 +39,12 @@ function update_github_pullrequest() {
     fi
 
     # Repo owner
-    OWNER="$3"
+    owner="$3"
     
     # Verifica se o parâmetro foi fornecido
-    if [[ -z "$OWNER" ]]; then
+    if [[ -z "$owner" ]]; then
         # Se não foi fornecido, utiliza o padrão definido em auth.sh
-        OWNER="$DEF_GH_OWNER"
+        owner="$DEF_GH_OWNER"
     fi
         
     up_pr_title="$(format_pullrequest "title")"
@@ -53,8 +53,8 @@ function update_github_pullrequest() {
     # Create the JSON payload for the repository
     payload='{"title":"'"$up_pr_title"'", "body":"'"$up_pr_body"'"}'
 
-    #pr_url="$API_URL/$OWNER/$repo/pulls"
-    pr_endpoint="$(build_gh_endpoint "PR" "$OWNER" "$repo")"
+    #pr_url="$API_URL/$owner/$repo/pulls"
+    pr_endpoint="$(build_gh_endpoint "PR" "$owner" "$repo")"
     endpoint="$pr_endpoint/$pr"
     
     # Create the repository using curl
