@@ -87,12 +87,12 @@ function build_gl_endpoint() {
     local route
     local owner
     local repo
-    local SLASH_ENCODED
+    local slash_encoded
     
     route="$1"
     owner="$2"
     repo="$3"
-    SLASH_ENCODED="%2F"
+    slash_encoded="%2F"
 
     if [[ -z "$route" || -z "$owner" || -z "$repo" ]]; then
         echo "Error: route, owner, and repository are required for Gitlab."
@@ -102,10 +102,10 @@ function build_gl_endpoint() {
     # Endpoint selector
     case "$route" in
         PR)
-            endpoint="$GL_URL/$GL_REPO_EP/$owner$SLASH_ENCODED$repo/merge_requests"
+            endpoint="$GL_URL/$GL_REPO_EP/$owner$slash_encoded$repo/merge_requests"
             ;;
         REPOS)
-            endpoint="$GL_URL/$GL_REPO_EP/$owner$SLASH_ENCODED$repo"
+            endpoint="$GL_URL/$GL_REPO_EP/$owner$slash_encoded$repo"
             ;;
         # ... adicionar outras rotas específicas do Gitlab
         *)

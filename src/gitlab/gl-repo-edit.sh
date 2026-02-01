@@ -39,8 +39,8 @@ function edit_gitlab_repo() {
     payload='{"description": "'"$new_description"'"}'
     
     # Construct API Endpoint
-    SLASH_ENCODED="%2F"
-    endpoint="https://gitlab.com/api/v4/projects/$owner$SLASH_ENCODED$repo"
+    slash_encoded="%2F"
+    endpoint="https://gitlab.com/api/v4/projects/$owner$slash_encoded$repo"
         
     # Edit GitLab repository using curl
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PUT "$endpoint" \

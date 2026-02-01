@@ -25,8 +25,8 @@ function delete_gitlab_repo() {
     fi
         
     # Construct API Endpoint
-    SLASH_ENCODED="%2F"
-    endpoint="https://gitlab.com/api/v4/projects/$owner$SLASH_ENCODED$repo"
+    slash_encoded="%2F"
+    endpoint="https://gitlab.com/api/v4/projects/$owner$slash_encoded$repo"
         
     # Confirm deletion before proceeding
     echo "Are you sure you want to delete the repository '$repo' (y/N)?"
