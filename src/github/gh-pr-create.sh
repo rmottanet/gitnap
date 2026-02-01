@@ -9,7 +9,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 
 
 function create_github_pullrequest() {
-    local REPO
+    local repo
     local OWNER
     local pr_title
     local pr_body
@@ -20,11 +20,11 @@ function create_github_pullrequest() {
     local response
         
     # Name of repository
-    REPO="$1"
+    repo="$1"
     
     # Checks if the parameter was provided or use the name of the current directory
-    if [[ -z "$REPO" ]]; then
-        REPO=$(basename "$PWD")
+    if [[ -z "$repo" ]]; then
+        repo=$(basename "$PWD")
     fi
 
     # Repo owner
@@ -46,7 +46,7 @@ function create_github_pullrequest() {
         "head":"'"$source_branch"'","base":"'"$target_branch"'"}'
 
     # Construct URL endpoint
-    endpoint="$(build_gh_endpoint "PR" "$OWNER" "$REPO")"
+    endpoint="$(build_gh_endpoint "PR" "$OWNER" "$repo")"
     
     # Create the repository using curl
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X POST "$endpoint" \

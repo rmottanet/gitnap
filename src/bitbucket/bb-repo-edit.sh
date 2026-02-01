@@ -7,7 +7,7 @@ BITBUCKET_AUTH="Authorization: Basic $(echo -n "$BITBUCKET_USER:$BITBUCKET_APPWD
 
 
 function edit_bitbucket_repo() {
-    local REPO
+    local repo
     local WORKSPACE
     local new_description
     local payload
@@ -24,11 +24,11 @@ function edit_bitbucket_repo() {
     fi
 
     # Name of repository
-    REPO="$2"
+    repo="$2"
     
     # Checks if the parameter was provided or use the name of the current directory
-    if [[ -z "$REPO" ]]; then
-        REPO=$(basename "$PWD")
+    if [[ -z "$repo" ]]; then
+        repo=$(basename "$PWD")
     fi
     
     # Name of workspace
@@ -43,7 +43,7 @@ function edit_bitbucket_repo() {
     payload='{"description": "'"$new_description"'"}'
         
     # Construct API Endpoint
-    endpoint="https://api.bitbucket.org/2.0/repositories/$WORKSPACE/$REPO"
+    endpoint="https://api.bitbucket.org/2.0/repositories/$WORKSPACE/$repo"
 
     # Edit Bitbucket repository
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PUT "$endpoint" \

@@ -9,7 +9,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 
 
 function create_gitlab_pullrequest() {
-    local REPO
+    local repo
     local OWNER
     local pr_title
     local pr_body
@@ -20,12 +20,12 @@ function create_gitlab_pullrequest() {
     local response
         
     # Name of repository
-    REPO="$1"
+    repo="$1"
     
     # Verifica se o parâmetro foi fornecido
-    if [[ -z "$REPO" ]]; then
+    if [[ -z "$repo" ]]; then
         # Se não foi fornecido, utiliza o nome do diretório atual
-        REPO=$(basename "$PWD")
+        repo=$(basename "$PWD")
     fi
 
     # Repo owner
@@ -49,7 +49,7 @@ function create_gitlab_pullrequest() {
         "remove_source_branch":"True", "squash":"True"}'
 
     # Construct the endpoint URL
-    endpoint="$(build_gl_endpoint "PR" "$OWNER" "$REPO")"
+    endpoint="$(build_gl_endpoint "PR" "$OWNER" "$repo")"
     
     # Create the repository using curl
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X POST "$endpoint" \

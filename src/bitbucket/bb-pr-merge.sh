@@ -10,7 +10,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 
 function create_bitbucket_pullrequest() {
     local pr
-    local REPO
+    local repo
     local WORKSPACE
     local payload
     local pr_endpoint
@@ -27,12 +27,12 @@ function create_bitbucket_pullrequest() {
     fi
         
     # Name of repository
-    REPO="$2"
+    repo="$2"
     
     # Verifica se o parâmetro foi fornecido
-    if [[ -z "$REPO" ]]; then
+    if [[ -z "$repo" ]]; then
         # Se não foi fornecido, utiliza o nome do diretório atual
-        REPO=$(basename "$PWD")
+        repo=$(basename "$PWD")
     fi
 
     # Repo owner
@@ -53,7 +53,7 @@ function create_bitbucket_pullrequest() {
     }'
 
     # Construct URL endpoint
-    pr_endpoint="$(build_bb_endpoint "PR" "$WORKSPACE" "$REPO")"
+    pr_endpoint="$(build_bb_endpoint "PR" "$WORKSPACE" "$repo")"
     endpoint="$endpoint/$pr/merge"
     
     # Create the repository using curl

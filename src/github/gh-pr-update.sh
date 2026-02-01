@@ -10,7 +10,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 
 function update_github_pullrequest() {
     local pr
-    local REPO
+    local repo
     local OWNER
     local up_pr_title
     local up_pr_body
@@ -30,12 +30,12 @@ function update_github_pullrequest() {
     fi
         
     # Name of repository
-    REPO="$2"
+    repo="$2"
     
     # Verifica se o parâmetro foi fornecido
-    if [[ -z "$REPO" ]]; then
+    if [[ -z "$repo" ]]; then
         # Se não foi fornecido, utiliza o nome do diretório atual
-        REPO=$(basename "$PWD")
+        repo=$(basename "$PWD")
     fi
 
     # Repo owner
@@ -53,8 +53,8 @@ function update_github_pullrequest() {
     # Create the JSON payload for the repository
     payload='{"title":"'"$up_pr_title"'", "body":"'"$up_pr_body"'"}'
 
-    #pr_url="$API_URL/$OWNER/$REPO/pulls"
-    pr_endpoint="$(build_gh_endpoint "PR" "$OWNER" "$REPO")"
+    #pr_url="$API_URL/$OWNER/$repo/pulls"
+    pr_endpoint="$(build_gh_endpoint "PR" "$OWNER" "$repo")"
     endpoint="$pr_endpoint/$pr"
     
     # Create the repository using curl

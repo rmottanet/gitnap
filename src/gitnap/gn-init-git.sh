@@ -6,17 +6,17 @@ source "$GITNAP/utils/down_license.sh"
 
 # Sets up a new Git project with optional .gitignore and license.
 function initialize_git_repo() {
-    local REPO
+    local repo
     
     # Get current working directory
-    REPO=$(basename "$PWD")
+    repo=$(basename "$PWD")
     
     # Initialize Git repository
     git init --initial-branch=main
     
     # Check for existing README.md file
     if [ ! -f "README.md" ]; then
-        echo "# $REPO" > README.md
+        echo "# $repo" > README.md
     fi
     
     git add README.md

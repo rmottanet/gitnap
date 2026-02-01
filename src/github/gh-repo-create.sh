@@ -3,21 +3,21 @@ set -euo pipefail
 
 
 function create_github_repo() {
-    local REPO
+    local repo
     local payload
     local endpoint
     local response
     
     # Name of repository
-    REPO="$1"
+    repo="$1"
     
     # Checks if the parameter was provided or use the name of the current directory
-    if [[ -z "$REPO" ]]; then
-        REPO=$(basename "$PWD")
+    if [[ -z "$repo" ]]; then
+        repo=$(basename "$PWD")
     fi
     
     # Create the JSON payload for the repository
-    payload='{"name": "'"$REPO"'", "private": true}'
+    payload='{"name": "'"$repo"'", "private": true}'
 
     # API Endpoint
     endpoint="https://api.github.com/user/repos"

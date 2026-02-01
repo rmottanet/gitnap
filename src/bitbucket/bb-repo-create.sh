@@ -7,7 +7,7 @@ BITBUCKET_AUTH="Authorization: Basic $(echo -n "$BITBUCKET_USER:$BITBUCKET_APPWD
 
 
 function create_bitbucket_repo() {
-    local REPO
+    local repo
     local WORKSPACE
     local PROJECT
     local payload
@@ -15,11 +15,11 @@ function create_bitbucket_repo() {
     local response
     
     # Name of repository
-    REPO="$1"
+    repo="$1"
     
     # Checks if the parameter was provided or use the name of the current directory
-    if [[ -z "$REPO" ]]; then
-        REPO=$(basename "$PWD")
+    if [[ -z "$repo" ]]; then
+        repo=$(basename "$PWD")
     fi
 
     # Name of project
@@ -45,7 +45,7 @@ function create_bitbucket_repo() {
         }}'
 
     # Construct the API Endpoint
-    endpoint="https://api.bitbucket.org/2.0/repositories/$WORKSPACE/$REPO"
+    endpoint="https://api.bitbucket.org/2.0/repositories/$WORKSPACE/$repo"
     
     # Create Bitbucket repository
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X POST "$endpoint" \

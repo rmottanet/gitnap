@@ -3,7 +3,7 @@ set -euo pipefail
 
 
 function edit_gitlab_repo() {
-    local REPO
+    local repo
     local OWNER
     local new_description
     local payload
@@ -20,11 +20,11 @@ function edit_gitlab_repo() {
     fi
 
     # Name of repository
-    REPO="$2"
+    repo="$2"
     
     # Checks if the parameter was provided or use the name of the current directory
-    if [[ -z "$REPO" ]]; then
-        REPO=$(basename "$PWD")
+    if [[ -z "$repo" ]]; then
+        repo=$(basename "$PWD")
     fi
     
     # Repo owner
@@ -40,7 +40,7 @@ function edit_gitlab_repo() {
     
     # Construct API Endpoint
     SLASH_ENCODED="%2F"
-    endpoint="https://gitlab.com/api/v4/projects/$OWNER$SLASH_ENCODED$REPO"
+    endpoint="https://gitlab.com/api/v4/projects/$OWNER$SLASH_ENCODED$repo"
         
     # Edit GitLab repository using curl
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X PUT "$endpoint" \

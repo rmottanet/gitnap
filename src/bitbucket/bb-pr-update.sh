@@ -10,7 +10,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 
 function update_bitbucket_pullrequest() {
     local pr    
-    local REPO
+    local repo
     local PROJECT
     local up_pr_title
     local up_pr_body
@@ -30,12 +30,12 @@ function update_bitbucket_pullrequest() {
     fi
         
     # Name of repository
-    REPO="$2"
+    repo="$2"
     
     # Verifica se o parâmetro foi fornecido
-    if [[ -z "$REPO" ]]; then
+    if [[ -z "$repo" ]]; then
         # Se não foi fornecido, utiliza o nome do diretório atual
-        REPO=$(basename "$PWD")
+        repo=$(basename "$PWD")
     fi
 
     # Repo owner
@@ -62,9 +62,9 @@ function update_bitbucket_pullrequest() {
         } } }'
 
     # Construct URL endpoint
-    #endpoint_url="$API_URL/projects/$PROJECT/repos/$REPO/pull-requests/$pr"
+    #endpoint_url="$API_URL/projects/$PROJECT/repos/$repo/pull-requests/$pr"
 
-    pr_endpoint="$(build_bb_endpoint "PR" "$WORKSPACE" "$REPO")"
+    pr_endpoint="$(build_bb_endpoint "PR" "$WORKSPACE" "$repo")"
     endpoint="$pr_endpoint/$pr"
        
     # Create the repository using curl

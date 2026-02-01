@@ -10,7 +10,7 @@ source "$GITNAP/utils/format_pullrequest.sh"
 
 function merge_gitlab_pullrequest() {
     local pr
-    local REPO
+    local repo
     local OWNER
     local payload
     local endpoint
@@ -26,12 +26,12 @@ function merge_gitlab_pullrequest() {
     fi
         
     # Name of repository
-    REPO="$2"
+    repo="$2"
     
     # Verifica se o parâmetro foi fornecido
-    if [[ -z "$REPO" ]]; then
+    if [[ -z "$repo" ]]; then
         # Se não foi fornecido, utiliza o nome do diretório atual
-        REPO=$(basename "$PWD")
+        repo=$(basename "$PWD")
     fi
 
     # Repo owner
@@ -47,7 +47,7 @@ function merge_gitlab_pullrequest() {
     payload='{"merge_method":"squash"}'
 
     # Construct the endpoint URL
-    pr_endpoint="$(build_gl_endpoint "PR" "$OWNER" "$REPO")"
+    pr_endpoint="$(build_gl_endpoint "PR" "$OWNER" "$repo")"
     endpoint="$pr_endpoint/$pr/merge"
     
     # Create the repository using curl
