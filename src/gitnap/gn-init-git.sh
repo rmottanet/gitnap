@@ -15,14 +15,14 @@ function initialize_git_repo() {
     git init --initial-branch=main
     
     # Check for existing README.md file
-    if [ ! -f "README.md" ]; then
+    if [[ ! -f "README.md" ]]; then
         echo "# $repo" > README.md
     fi
     
     git add README.md
     
     # Handle optional language parameter
-    if [ -n "$1" ]; then
+    if [[ -n "$1" ]]; then
         # Language name from parameter
         language="$1"
         download_gitignore "$language"
@@ -30,7 +30,7 @@ function initialize_git_repo() {
     fi
     
     # Handle optional license parameter
-    if [ -n "$2" ]; then
+    if [[ -n "$2" ]]; then
         # License type from parameter
         license="$2"
         download_license "$license"
