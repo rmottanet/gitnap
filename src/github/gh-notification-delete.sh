@@ -12,21 +12,21 @@ set -euo pipefail
 
 
 function delete_github_notifications() {
-	local NOTIFICATION_ID
+	local notification_id
     local endpoint
     local response
     local tmp_file
     
-    NOTIFICATION_ID="$1"
+    notification_id="$1"
 
     # Checks if the parameter was provided.
-    if [[ -z "$NOTIFICATION_ID" ]]; then
+    if [[ -z "$notification_id" ]]; then
         echo "Provide id notification to delete"
         exit 1
     fi
     
     # API Endpoint
-    endpoint="https://api.github.com/notifications/threads/$NOTIFICATION_ID"
+    endpoint="https://api.github.com/notifications/threads/$notification_id"
 
     # Delete notifications
     response=$(curl --proto "=https" --tlsv1.2 -sSf -L -X DELETE "$endpoint" \
